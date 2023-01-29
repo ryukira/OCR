@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ultimate OCR</string>
+    <string name="app_name">OCR</string>
     <string name="clear">Clear</string>
     <string name="dial">Dial</string>
     <string name="regex">Regex</string>
