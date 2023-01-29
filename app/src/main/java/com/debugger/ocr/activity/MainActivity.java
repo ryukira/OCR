@@ -1,14 +1,18 @@
 package com.debugger.ocr.activity;
 
 
+import static androidx.constraintlayout.motion.widget.Debug.getLocation;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.debugger.ocr.R;
 
@@ -38,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         } else if (requestCode == 2) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 switchCameraActivity();
+            }
+        }
+        if (requestCode == 10){
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(getApplicationContext(), "Izin lokasi tidak di aktifkan!", Toast.LENGTH_SHORT).show();
+            }else{
+                getLocation();
             }
         }
     }
